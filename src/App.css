@@ -1,0 +1,263 @@
+/***** FONTS ***********/
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/***********************/
+
+#root {
+  font-family: 'Ubuntu Mono';
+  /* max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center; */
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  text-align: center;
+  background-color: #40826D;
+  color: #FFE5AD;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 1em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/***** Navbar ****************/
+
+#navbar {
+  background-color: #433A3F;
+  color: #FFE5AD;
+  max-width: 1280px;
+  margin: 0 0;
+  padding: 0;
+  text-align: center;
+  border-bottom: groove 5px #e3e3e3;
+}
+
+/*****************************/
+
+.TempLogo {
+  font-style: italic;
+}
+
+.AppHeader {
+  margin: 10px 0 25px 0;
+}
+
+.AppHeader p {
+  font-size: 12px;
+}
+
+.InstructionAccordion {
+  color: #FFE5AD;
+  border: solid 1px #433A3F;
+  border-radius: 15px;
+  text-align: left;
+  padding: 0 0.75em;
+}
+
+.InstructionAccordion legend {
+  padding-right: 0;
+}
+
+.InstructionList {
+  height: 125px;
+  transition:opacity 0.3s linear,height 0.3s linear;
+  font-size: 12px;
+}
+
+.InstructionList p {
+  margin: 5px 0;
+}
+
+#legendLeft {
+  padding: 0 10px 0 0;
+}
+
+#legendOpenClose {
+  padding: 5px;
+  border: solid 1px #433A3F;
+  background-color: #40826D;
+}
+
+/*****************************/
+
+.discoveryInput {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: center;
+  border: solid 3px #433A3F;
+  border-radius: 7.5px;
+}
+
+.discoveryInputBox {
+  width: 100%;
+  padding: 10px 5px;
+  border-radius: 5px;
+  border: solid 2px #434C4B;
+  background-color: #40826D;
+  color: #FFE5AD;
+  box-shadow: inset 0px 0px 3px 1px #425E56;
+}
+
+.discoveryInputLabel {
+  display: flex;
+  justify-content: space-between;
+}
+
+.discoveryInput button {
+  border: solid 2px #433A3F;
+  border-radius: 20px;
+  margin: 20px 0 5px 0;
+  width: 70%;
+}
+
+#inputex {
+  font-style: italic;
+  font-size: 10px;
+  color: #FFF2D6;
+  margin: 0 0 10px 0;
+}
+
+#howthisworksBtn {
+  margin: 0;
+  border: dotted 2px #433A3F;
+  padding: 5px;
+}
+
+.artistList {
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+}
+
+.artistList li {
+  list-style: none;
+  padding: 5px;
+  border: solid 1px darkblue;
+  border-radius: 5px;
+}
+
+.artistRows {
+  display: flex;
+}
+
+.artistListHeaders {
+  font-weight: bold;
+}
+
+.paginatorBtn {
+  background-color: #40826D;
+}
+
+.ArtistCard {
+  display: flex;
+  flex: 1 0 80%;
+  margin: 5px 0;
+  border: solid 1px maroon;
+  border-radius: 10px;
+}
+
+.artistDel {
+  flex: 0 0 20%;
+  border: solid 3px #425E56;
+  border-radius: 10px;
+  background-color: #40826D;
+  color: #FFE5AD;
+  margin: 5px 0 5px 5px;
+  padding: 5px 10px;
+}
+
+.disabled {
+  background-color: lightgrey;
+  color: grey;
+  border: solid 1px grey;
+  cursor: auto;
+}
+
+#artistname {
+  font-style: italic;
+  order: 1;
+  flex-grow: 2;
+  flex-basis: 75px;
+}
+
+#artistcount {
+  order: 2;
+  flex-grow: 1;
+  flex-basis: 50px;
+}
+
+#artistdate {
+  order: 3;
+  flex-grow: 1;
+  flex-basis: 100px;
+}
+
+/* // X-Small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap */
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+  #app {
+    padding: 1rem 10rem;
+  }
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {  }
+
+/* // X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+  #app {
+    padding: 1rem 15rem;
+  }
+}
+
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  #app {
+    padding: 1rem 25rem;
+  }
+}
