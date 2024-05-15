@@ -4,30 +4,24 @@ The ever-elusive AnR Discocat idea that I've never quite implemented. Somehow co
 
 ## Development
 
-**The current implementation requires *three(!!!) servers!*** You must run the Flask app from `app.py` *and* the [Spotify-Monthly-Listeners-API](https://github.com/toluooshy/Spotify-Monthly-Listeners-API) from `Spotify-Monthly-Listeners-API/main.py`, each running on ports 5000 and 8000s respectively. Newly added in late April 2024, you must now also run `npm run dev` to start the frontend of the Vite app.
+Yay, we no longer need three servers. The Flask api has been merged with the [Spotify-Monthly-Listeners-API](https://github.com/toluooshy/Spotify-Monthly-Listeners-API) and converted to use [FastAPI](https://fastapi.tiangolo.com/#run-it), which is basically a newer version of a Python-based web framework for building APIs. Below are the steps to start both development servers. 
 
-My next task is looking to merge these before I dive much deeper in development.
+*Note: Don't forget to add environment variables to your coding environment from `.env`*
 
-Also, don't forget to **add the environment variables in `.env` to your dev environment!**
-
-### How to Start
-
-(From the `/api` directory) 
-In one terminal, run:
+**Start Backend Server:**
+From the `/api` directory, run: 
 
 `. .venv/Scripts/activate`
-`flask --app api run --debug`
 
-(From the `/api/Spotify-Monthly-Listeners-API` directory) 
-In another, run:
+Then, once the virtual environment has been started, run:
 
-`. .venv/Scripts/activate`
-`uvicorn main:spapi --reload`
+`fastapi dev discopapi.py`
 
-(From the top-level `discocatfe` directory) 
-In yet another, run: 
+**Start Frontend Server:**
+In another terminal, from the top level `discocat` directory, run:
 
 `npm run dev`
+
 
 ### Deployment Notes
 *For keeping track of how deployment process is being implemented.*
@@ -35,34 +29,43 @@ In yet another, run:
 Following this tutorial: https://blog.miguelgrinberg.com/post/how-to-deploy-a-react--flask-project
 
 
-### Development Notes & Milestones
+### Development Notes & Milestones / Change Logs
 
-#### v0.0.1
+#### v0.0.0.1
 *Simple and basic version*
 - [x] Add new artist from Spotify URI
 - [x] Display list of artists upon load
 - [x] Add new artist to list
 - [x] Delete specified artist
 
-#### v0.0.2
+#### v0.0.0.2
 - [x] Update artist list immediately after save/delete
 - [x] Basic improvements to base UI (user input & artist list)
 - [x] Display monthly listeners & date in better format
 - [x] Remove delete btn from header
 
-#### v0.0.3
+#### v0.0.0.3
 - [x] Use more official framework, library, or db for displaying artists with pagination --> ***going with [PrimeReact](https://primereact.org/installation/)***
 - [x] Improve overall UI to a clean-ish basis
 *completed 5.8.24*
 
-#### v0.0.3_Hotfix
+#### v0.0.0.3_Hotfix
 - [x] Combined my `api` with Spotify-Monthly-Listener-API's `spapi` to exist as a single backend api service using FastAPI instead of Flask
 
-#### v0.0.4
+#### v0.0.0.4
+- [x] Implement Python *types* per [FastAPI docs](https://fastapi.tiangolo.com/python-types/)
+- [ ] Implement SQLite database using [SQLModel](https://sqlmodel.tiangolo.com/tutorial)
+- - [x] Convert `/view`
+- - [x] Convert `/save`
+
+#### v0.0.0.5 (?)
 - [] Enable responsive UI (so mobile AND web look clean)
-- [] Enable deployment processes (how does uvicorn work in production?)
+- ~~[] Enable deployment processes (how does uvicorn work in production?)~~
 
 #### *Future*
+- [ ] Implement an actual database (lmao)
+- [ ] Add user accounts
+- [ ] Explore, choose & implement a deployment method
 - [ ] Update monthly listeners and show change
 - [ ] Track changes to monthly listeners over time (v1: via logs)
 - [ ] Display *tags*
@@ -70,7 +73,6 @@ Following this tutorial: https://blog.miguelgrinberg.com/post/how-to-deploy-a-re
 - [ ] Spotify API integration to link to artist pages & artist search
 
 #### *'Someday' Ideas*
-- User accounts
 - Add charts for tracking changes over time, instead of logs
 - Awards for having artists with big jumps
 - "Seasons" like in BBGM, where only artists added in X timeframe are counted and people are rewarded for best finds

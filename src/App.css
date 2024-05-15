@@ -73,6 +73,8 @@
 
 .TempLogo {
   font-style: italic;
+  padding: 20px;
+  border: solid 1px #433A3F;
 }
 
 .AppHeader {

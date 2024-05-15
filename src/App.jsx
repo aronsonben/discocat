@@ -5,31 +5,11 @@ import { Paginator } from 'primereact/paginator';
 import Navbar from './components/Navbar';
 import './App.css'
 
-// function ArtistListOld() {
-//   const [currentArtists, setCurrentArtists] = useState([]);
-
-//   return (
-//     <div>
-//           <div className="artistList">
-//             <div className="artistRows">
-//               <div className="artistListHeaders ArtistCard">
-//                 <p id="artistname">Artist Name</p>
-//                 <p id="artistcount">Monthly Listeners</p>
-//                 <p id="artistdate">Date Added</p>
-//               </div>
-//               <button type="button" disabled={true} className="artistDel disabled">Filter</button>
-//             </div>
-//             {currentArtists.map(artist => (
-//               <div className="artistRows" key={artist.id+artist.name}>
-//                 <ArtistCard artist={artist}/>
-//                 <button className="artistDel" onClick={() => deleteCall(artist.id)}>Delete</button>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//   );
-// }
-
+/**
+ * Component that holds the instruction box for displaying instructions
+ *   on how to use the app
+ * @returns 
+ */
 function InstructionBar() {
   const divRef = useRef(null);
   const [instructionsOpen, setInstructionsOpen] = useState(true);
@@ -66,6 +46,12 @@ function InstructionBar() {
   );
 }
 
+/**
+ * Component that holds the input box for users to place a Spotify URI
+ *   of their newly discovered artist
+ * @param {*} param0 
+ * @returns 
+ */
 function DiscoveryInput({inputValue, setInputValue, save}) {
   return (
     <div className="card discoveryInput">
@@ -86,6 +72,11 @@ function DiscoveryInput({inputValue, setInputValue, save}) {
   );
 }
 
+/**
+ * Component that represents the list of saved artists to be displayed
+ * @param {*} param0 
+ * @returns 
+ */
 function ArtistList({currentArtists, first, onPageChange}) {
   const deleteBodyTemplate = (artist) => {
     return <button className="artistDel" onClick={() => deleteCall(artist.id)}>Delete</button>
@@ -127,6 +118,12 @@ function ArtistList({currentArtists, first, onPageChange}) {
   );
 }
 
+/**
+ * Component that appears in the ArtistList and displays an artist's 
+ *  basic information (name, monthly listener count, date added)
+ * @param {*} param0 
+ * @returns 
+ */
 function ArtistCard({artist, parameter}) { 
 
   const commas = (count) => {
@@ -200,10 +197,22 @@ function App() {
         uri: discoveryInput,
       }),
     })
-    .then(res => res.json())
+    .then(res => {
+      console.log(res)
+      if(res.status == 500) {
+        console.log("Artist already exists");
+        throw new Error("YO!")
+      } else {
+        res.json();
+      }
+    })
     .then(data => {
       console.log(data);
       setCurrentArtists(data.artists.artists.artists);
+    })
+    .catch(error => {
+      console.log("error", error)
+      // TODO: Display error message next to save button
     });
     return (
       <p>hi</p>
